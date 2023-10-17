@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkasset_pass_sample=self.webpackChunkasset_pass_sample||[]).push([[2892],{6746:s=>{s.exports=JSON.parse('{"label":"facebook","permalink":"/asset-pass-sample/blog/tags/facebook","allTagsPath":"/asset-pass-sample/blog/tags","count":1}')}}]);
