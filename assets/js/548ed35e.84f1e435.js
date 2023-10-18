@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkasset_pass_sample=self.webpackChunkasset_pass_sample||[]).push([[9906],{976:s=>{s.exports=JSON.parse('{"label":"docusaurus","permalink":"/asset-pass-sample/blog/tags/docusaurus","allTagsPath":"/asset-pass-sample/blog/tags","count":4}')}}]);
