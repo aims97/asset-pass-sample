@@ -1,0 +1,474 @@
+openapi: 3.0.3
+info:
+  title: AssetPass Vault API
+  version: 1.0.0
+  description: APIs for managing and transfering keys through a trustee
+paths:
+  /api/devices/:
+    get:
+      operationId: devices_list
+      parameters:
+      - in: query
+        name: user
+        schema:
+          type: string
+        description: Query will return your own devices by default. To get another
+          user's devices, enter the userId to filter.
+      tags:
+      - devices
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+          description: ''
+    post:
+      operationId: devices_create
+      tags:
+      - devices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateDevice'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateDevice'
+          description: ''
+  /api/devices-admin/:
+    get:
+      operationId: devices_admin_list
+      tags:
+      - devices-admin
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Device'
+          description: ''
+  /api/devices-admin/{uuid}/:
+    get:
+      operationId: devices_admin_retrieve
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices-admin
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+  /api/devices-admin/{uuid}/ban/:
+    post:
+      operationId: devices_admin_ban_create
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices-admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Device'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+  /api/devices-admin/{uuid}/logout/:
+    post:
+      operationId: devices_admin_logout_create
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices-admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Device'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+  /api/devices-admin/{uuid}/unban/:
+    post:
+      operationId: devices_admin_unban_create
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices-admin
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Device'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Device'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Device'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+  /api/devices/{uuid}/:
+    get:
+      operationId: devices_retrieve
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Device'
+          description: ''
+    put:
+      operationId: devices_update
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateDevice'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateDevice'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateDevice'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateDevice'
+          description: ''
+    delete:
+      operationId: devices_destroy
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - devices
+      responses:
+        '204':
+          description: No response body
+  /api/secrets/:
+    get:
+      operationId: secrets_list
+      parameters:
+      - in: query
+        name: item
+        schema:
+          type: string
+        description: Enter itemId
+      - in: query
+        name: status
+        schema:
+          type: string
+        description: Enter Status
+      tags:
+      - secrets
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Secret'
+          description: ''
+    post:
+      operationId: secrets_create
+      description: The user field has to be filled. To create a secret for yourself,
+        add 'self' under user with 'final' as the status. If not enter the uuid of
+        the user and 'temp' as the status
+      tags:
+      - secrets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSecret'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateSecret'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateSecret'
+        required: true
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSecret'
+          description: ''
+  /api/secrets/{uuid}/:
+    get:
+      operationId: secrets_retrieve
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - secrets
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: ''
+    put:
+      operationId: secrets_update
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - secrets
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateSecret'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateSecret'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateSecret'
+        required: true
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateSecret'
+          description: ''
+    delete:
+      operationId: secrets_destroy
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - secrets
+      responses:
+        '204':
+          description: No response body
+  /api/secrets/{uuid}/by_item/:
+    get:
+      operationId: secrets_by_item_retrieve
+      parameters:
+      - in: path
+        name: uuid
+        schema:
+          type: string
+        required: true
+      tags:
+      - secrets
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Secret'
+          description: ''
+components:
+  schemas:
+    CreateDevice:
+      type: object
+      properties:
+        device_id:
+          type: string
+          title: Device identifier
+          maxLength: 150
+        public_key:
+          type: string
+        data:
+          type: object
+          additionalProperties: {}
+        name:
+          type: string
+          title: Device Name
+          maxLength: 500
+      required:
+      - device_id
+      - public_key
+    CreateSecret:
+      type: object
+      properties:
+        item:
+          type: string
+          title: ItemID
+          maxLength: 100
+        item_key:
+          type: string
+        status:
+          type: string
+        user:
+          type: string
+      required:
+      - item
+      - item_key
+      - status
+      - user
+    Device:
+      type: object
+      properties:
+        banned:
+          type: string
+          readOnly: true
+        banned_reason:
+          type: string
+          readOnly: true
+        name:
+          type: string
+          title: Device Name
+          maxLength: 500
+        device_id:
+          type: string
+          title: Device identifier
+          maxLength: 150
+        public_key:
+          type: string
+        uuid:
+          type: string
+          maxLength: 50
+        data:
+          type: object
+          additionalProperties: {}
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - banned
+      - banned_reason
+      - created
+      - device_id
+      - public_key
+      - updated
+      - uuid
+    Secret:
+      type: object
+      properties:
+        item:
+          type: string
+          title: ItemID
+          maxLength: 100
+        item_key:
+          type: string
+        uuid:
+          type: string
+          maxLength: 50
+        status:
+          type: string
+          maxLength: 50
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+      required:
+      - created
+      - item
+      - item_key
+      - updated
+      - uuid
+  securitySchemes:
+    oauth2:
+      type: oauth2
+      flows: {}
