@@ -1,1 +1,0 @@
-"use strict";(self.webpackChunkasset_pass_sample=self.webpackChunkasset_pass_sample||[]).push([[785],{5459:s=>{s.exports=JSON.parse('{"permalink":"/asset-pass-sample/blog/tags/hola","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);
