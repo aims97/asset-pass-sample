@@ -52,6 +52,34 @@ const config = {
         },
       }),
     ],
+    [
+      'redocusaurus',
+      {
+        // Plugin Options for loading OpenAPI files
+        specs: [
+          {
+            id: 'AssetpassAuth',
+            spec: 'AssetPassAuth.yaml',
+            route: 'docs/assetpass-auth',
+          },
+          {
+            id: 'AssetpassAlbumAPI',
+            spec: 'AssetPassAlbumAPI.yaml',
+            route: 'docs/assetpass-album-api',
+          },
+          {
+            id: 'AssetPassVaultAPI',
+            spec: 'AssetPassVaultAPI.yaml',
+            route: 'docs/assetpass-vault-api',
+          },
+        ],
+        // Theme Options for modifying how redoc renders them
+        theme: {
+          // Change with your site colors
+          primaryColor: '#1890ff',
+        },
+      },
+    ],
   ],
 
   themeConfig:
