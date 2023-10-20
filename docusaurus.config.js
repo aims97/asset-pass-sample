@@ -7,8 +7,8 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'AssetPass Sample Doc',
-  tagline: 'The world’s leading digital legacy platform.',
-  favicon: 'img/favicon.ico',
+  tagline: 'The world`s leading digital legacy platform.',
+  favicon: 'https://assetpass.com/wp-content/uploads/2023/06/AssetPass-Logo-Line.svg',
 
   // Set the production url of your site here
   url: 'https://aims97.github.io',
@@ -91,7 +91,7 @@ const config = {
         title: 'AssetPass',
         logo: {
           alt: 'My Site Logo',
-          src: 'img/logo.svg',
+          src: 'https://assetpass.com/wp-content/uploads/2023/06/AssetPass-Logo-Line.svg',
         },
         items: [
           {
