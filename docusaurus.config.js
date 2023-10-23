@@ -91,7 +91,7 @@ const config = {
         title: 'AssetPass',
         logo: {
           alt: 'My Site Logo',
-          src: 'https://assetpass.com/wp-content/uploads/2023/06/AssetPass-Logo-Line.svg',
+          src: 'img/logo.png',
         },
         items: [
           {
